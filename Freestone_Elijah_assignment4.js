@@ -9,7 +9,8 @@ var say = function(message) { console.log(message); }; //Console.log Function
 
 var myLibrary = function() {
     
-    var checkNumber = function(phoneNum) { //Problem 1. Check valid phone number string
+//Problem 1. Does a string follow a 123-456-7890 pattern like a phone number?
+    var checkNumber = function(phoneNum) {
         var numPattern = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
             if (numPattern.test(phoneNum)) {
                 var validNumber = phoneNum.replace(numPattern, "($1) $2-$3");
@@ -21,8 +22,9 @@ var myLibrary = function() {
             };
     };
     
-    var checkEmail = function(email) { //Problem 2. Check valid email address string
-        var emailPattern = /^[a-zA-Z0-9.-_+]+@[a-zA-Z0-9.-_+]+.[a-zA-Z]{2,4}$/ //`~!@#$%^&*()={[}]|\:;"'<,>.?\/\
+//Problem 2. Does a string follow an aaa@bbb.ccc pattern like an email address?    
+    var checkEmail = function(email) { 
+        var emailPattern = /^[a-zA-Z0-9.-_+]+@[a-zA-Z0-9.-_+]+.[a-zA-Z]{2,4}$/ 
             if (emailPattern.test(email)) {
                 say("This is a valid email address. "); //Console Log if a valid email address
                     return true;
@@ -31,10 +33,24 @@ var myLibrary = function() {
                     return false;
             }
     };
-    
+
+//Problem 3. Format a number to use a specific number of decimal places, as for money.
+    var moveDecimal = function(money) {
+        //money -= 0;
+        money = (Math.round(money*100))/100;
+            if(isNaN(money)) {
+                say("Please enter a number. ");
+                    return false;
+            } else {
+                return (money == Math.floor(money)) ? money + '.00' : ((money*10 == Math.floor(money*10)) ? money + '0' : money);
+    };
+};
+
+
     return { //returns for all functions
         "checkNumber": checkNumber, //Problem 1
-        "checkEmail":  checkEmail //Problem 2
+        "checkEmail":  checkEmail, //Problem 2
+        "moveDecimal": moveDecimal //Problem 3
     };
 };
 
@@ -42,4 +58,9 @@ var newLib = new myLibrary(); //Creating new myLibrary to keep original intact w
 
 say(newLib.checkNumber("(970)988-8190")); //Problem 1 call. Check valid phone number.
 
-say(newLib.checkEmail("e=+fre/^@2@kdj=+.com")); //Problem 2 call. Check valid email address.
+say(newLib.checkEmail("e=+fre/^@2@kd/^j=+.com")); //Problem 2 call. Check valid email address. (special character test)
+
+say(newLib.moveDecimal("45.09876")); //Problem 3 call. Format number to use 2 decimals
+
+say(newLib.moveDecimal("bacon")); //problem 3 call. NaN test
+
