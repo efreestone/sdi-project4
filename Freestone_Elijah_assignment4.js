@@ -6,7 +6,7 @@ Project 4
 */
 
 var say = function(message) { console.log(message); }; //Console.log Function
-
+    
 var myLibrary = function() {
     
 //Problem 1. Does a string follow a 123-456-7890 pattern like a phone number?
@@ -47,15 +47,20 @@ var myLibrary = function() {
     };
     
 //Problem 4. Find the total value of just the numbers in an array, even if some of the items are not numbers.
-    var addNumbers = function(array) { //Not working!?!?!?!?!?!
+    var addNumbers = function(array) {
         var sum = 0;
             for (var i=0; i<array.length; i++) {
                 if (!isNaN(parseInt(array[i]))) { sum += array[i]; }
                 }   return sum;
     };
 
+//Problem 5. Given a string version of a number such as "42", return the value as an actual Number, such as 42.     
+    var convertString = function(string) {
+        var myNumber = string - 0;
+            return myNumber
+    };
 
-//Problem 5. Format a number to use a specific number of decimal places, as for money.
+//Problem 6. Format a number to use a specific number of decimal places, as for money.
     var moveDecimal = function(money) {
         money = (Math.round(money*100))/100;
             if(isNaN(money)) {
@@ -66,13 +71,13 @@ var myLibrary = function() {
     };
 };
 
-
     return { //returns for all functions
-        "checkNumber": checkNumber, //Problem 1
-        "checkEmail":  checkEmail,  //Problem 2
-        "checkUrl":    checkUrl,    //Problem 3
-        "addNumbers":  addNumbers,  //Problem 4
-        "moveDecimal": moveDecimal  //Problem 5
+        "checkNumber":   checkNumber,   //Problem 1
+        "checkEmail":    checkEmail,    //Problem 2
+        "checkUrl":      checkUrl,      //Problem 3
+        "addNumbers":    addNumbers,    //Problem 4
+        "convertString": convertString, //Problem 5
+        "moveDecimal":   moveDecimal    //Problem 6
     };
 };
 
@@ -86,7 +91,8 @@ say(newLib.checkUrl("https://www.spam.com")) //Problem 3 call. Check valid URL
 
 say(newLib.addNumbers([3, "spam", 17, "eggs"])); //Problem 4 call. Add just the numbers
 
-say(newLib.moveDecimal("45.09876")); //Problem 5 call. Format number to use 2 decimals
+say(newLib.convertString("42")); //Problem 5. Convert string number to actual number
 
-say(newLib.moveDecimal("bacon")); //problem 5 call. NaN test
+say(newLib.moveDecimal("45.09876")); //Problem 6 call. Format number to use 2 decimals
 
+say(newLib.moveDecimal("bacon")); //Problem 6 call. NaN test
