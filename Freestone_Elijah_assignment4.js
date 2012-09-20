@@ -48,7 +48,6 @@ var myLibrary = function() {
     
 //Problem 4. Find the total value of just the numbers in an array, even if some of the items are not numbers.
     var addNumbers = function(array) {
-        array = array.filter(String);
         var sum = 0;
             for (var i=0; i<array.length; i++) {
                 if (!isNaN(Number(array[i]))) { sum += array[i]; }
@@ -85,7 +84,7 @@ say(newLib.checkEmail("a_a-.a@bbb.ccc")); //Problem 2 call. Check valid email ad
 
 say(newLib.checkUrl("https://www.spam.com")) //Problem 3 call. Check valid URL
 
-say(newLib.addNumbers([3, "spam", 17, "eggs", "5"])); //Problem 4 call. Add just the numbers
+say(newLib.addNumbers([3, "spam", 17, "eggs"])); //Problem 4 call. Add just the numbers
 
 say(newLib.convertString("42")); //Problem 5. Convert string number to actual number
 
