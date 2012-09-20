@@ -33,13 +33,33 @@ var myLibrary = function() {
                     return false;
             }
     };
+    
+//Problem 3. Is the string a URL? (Does it start with http: or https:?)
+        var checkUrl = function(testUrl) {
+        var urlPattern = /^(http[s]?:)/;
+            if(urlPattern.test(testUrl)) {
+                say("This is a valid URL. ");
+                    return true;
+            } else {
+                say("This is not a URL. ")
+                    return false;
+            }
+    };
+    
+//Problem 4. Find the total value of just the numbers in an array, even if some of the items are not numbers.
+    var addNumbers = function(array) { //Not working!?!?!?!?!?!
+        var sum = 0;
+            for (var i=0; i<array.length; i++) {
+                if (!isNaN(parseInt(array[i]))) { sum += array[i]; }
+                }   return sum;
+    };
 
-//Problem 3. Format a number to use a specific number of decimal places, as for money.
+
+//Problem 5. Format a number to use a specific number of decimal places, as for money.
     var moveDecimal = function(money) {
-        //money -= 0;
         money = (Math.round(money*100))/100;
             if(isNaN(money)) {
-                say("Please enter a number. ");
+                say("Please enter a number. "); //Console Log if Not a Number
                     return false;
             } else {
                 return (money == Math.floor(money)) ? money + '.00' : ((money*10 == Math.floor(money*10)) ? money + '0' : money);
@@ -49,8 +69,10 @@ var myLibrary = function() {
 
     return { //returns for all functions
         "checkNumber": checkNumber, //Problem 1
-        "checkEmail":  checkEmail, //Problem 2
-        "moveDecimal": moveDecimal //Problem 3
+        "checkEmail":  checkEmail,  //Problem 2
+        "checkUrl":    checkUrl,    //Problem 3
+        "addNumbers":  addNumbers,  //Problem 4
+        "moveDecimal": moveDecimal  //Problem 5
     };
 };
 
@@ -60,7 +82,11 @@ say(newLib.checkNumber("(970)988-8190")); //Problem 1 call. Check valid phone nu
 
 say(newLib.checkEmail("e=+fre/^@2@kd/^j=+.com")); //Problem 2 call. Check valid email address. (special character test)
 
-say(newLib.moveDecimal("45.09876")); //Problem 3 call. Format number to use 2 decimals
+say(newLib.checkUrl("https://www.spam.com")) //Problem 3 call. Check valid URL
 
-say(newLib.moveDecimal("bacon")); //problem 3 call. NaN test
+say(newLib.addNumbers([3, "spam", 17, "eggs"])); //Problem 4 call. Add just the numbers
+
+say(newLib.moveDecimal("45.09876")); //Problem 5 call. Format number to use 2 decimals
+
+say(newLib.moveDecimal("bacon")); //problem 5 call. NaN test
 
