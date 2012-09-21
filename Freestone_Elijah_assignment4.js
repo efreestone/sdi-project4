@@ -36,7 +36,7 @@ var myLibrary = function() {
     
 //Problem 3. Is the string a URL? (Does it start with http: or https:?)
         var checkUrl = function(testUrl) {
-        var urlPattern = /^(http[s]?:)+[//]+(www)+.[a-zA-Z0-9.\-_]+.[a-zA-Z]{2,4}$/;
+        var urlPattern = /^(http[s]?:)+[//]+[www]+\.[a-zA-Z0-9.\-_]+\.[a-zA-Z]{2,4}$/;
             if(urlPattern.test(testUrl)) {
                 say("This is a valid URL. ");
                     return true;
