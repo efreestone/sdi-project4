@@ -24,7 +24,7 @@ var myLibrary = function() {
     
 //Problem 2. Does a string follow an aaa@bbb.ccc pattern like an email address?    
     var checkEmail = function(email) { 
-        var emailPattern = /^[a-zA-Z0-9.\-_]+@[a-zA-Z0-9.\-_]+.[a-zA-Z]{2,4}$/
+        var emailPattern = /^[a-zA-Z0-9.\-_]+\@[a-zA-Z0-9.\-_]+.[a-zA-Z]{2,4}$/;
             if (emailPattern.test(email)) {
                 say("This is a valid email address. "); //Console Log if a valid email address
                     return true;
