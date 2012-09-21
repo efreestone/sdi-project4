@@ -36,7 +36,7 @@ var myLibrary = function() {
     
 //Problem 3. Is the string a URL? (Does it start with http: or https:?)
         var checkUrl = function(testUrl) {
-        var urlPattern = /^(http[s]?:)/;
+        var urlPattern = /^(http[s]?:)+[//]+(www)+.[a-zA-Z0-9.\-_]+.[a-zA-Z]{2,4}$/;
             if(urlPattern.test(testUrl)) {
                 say("This is a valid URL. ");
                     return true;
@@ -80,7 +80,9 @@ var newLib = new myLibrary(); //Creating new myLibrary to keep original intact w
 
 say(newLib.checkNumber("123-456-7890")); //Problem 1 call. Check valid phone number.
 
-say(newLib.checkEmail("a_a-.a@bbb.ccc")); //Problem 2 call. Check valid email address. (special character test)
+say(newLib.checkEmail("aaa@bbb.ccc")); //Problem 2 call. Check valid email address.
+
+say(newLib.checkEmail("a_a-.a@bbb.ccc")); //Problem 2 call. Special character test.
 
 say(newLib.checkUrl("https://www.spam.com")) //Problem 3 call. Check valid URL
 
@@ -90,4 +92,4 @@ say(newLib.convertString("42")); //Problem 5. Convert string number to actual nu
 
 say(newLib.moveDecimal(2.1, 2)); //Problem 6 call. Format number to use 2 decimals
 
-say(newLib.moveDecimal("bacon")); //Problem 6 call. NaN test
+say(newLib.moveDecimal("bacon")); //Problem 6 call. NaN test.
